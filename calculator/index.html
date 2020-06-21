@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+<script>
+    function rangeSlider(value){
+    document.getElementsByClassName("agenumber")[0].innerText=value+" Years Old";
+}
+
+function computeBMI() {
+      //Obtain user inputs
+     var height = Number(document.getElementById("height").value);
+     var heightunits = document.getElementById("heightunits").value;
+     var weight = Number(document.getElementById("weight").value);
+     var weightunits = document.getElementById("weightunits").value;
+
+
+     //Convert all units to metric
+     if (heightunits == "inches") height /= 39.3700787;
+     if (weightunits == "lb") weight /= 2.20462;
+
+     //Perform calculation
+     var BMI = weight / Math.pow(height, 2);
+     //Display result of calculation
+document.getElementById("output").innerHTML = Math.round(BMI * 100)/100;
+     if (BMI < 18.5) document.getElementById("comment").innerHTML = "Underweight better eat more bread";
+     if (BMI >= 18.5 && BMI <= 25) document.getElementById("comment").innerHTML = "Normal you weak ass";
+     if (BMI >= 25 && BMI <= 30) document.getElementById("comment").innerHTML = "Obese you got this";
+     if (BMI > 30) document.getElementById("comment").innerHTML = "Overweight you fat fuck";
+     document.getElementById("answer").value = output;
+ }
+</script>
+    </head>
+    <body>
+        <div class="bigbox">
+            <h1 class="titre" >BMI Calculator
+            </h1>
+            <h3 class="titreage">Select your age</h3>
+            <input type="range" min="6" max="45" step="1" value="0"
+            class="slider" onmousemove="rangeSlider(this.value)" onchange="rangeSlider(this.value)"> 
+            <h2  class="agenumber"></h2>
+            
+        <div class="gonder">
+            
+        <h3 class="gendder" >
+            pick your Gender
+          </h3>
+          <div class="container">
+                                      <input type='radio' id='male' checked='checked' name='radio'>
+                                      <label for='male'>Male</label>
+                                      <input type='radio' id='female' name='radio'>
+                                      <label for='female'>Female</label>
+                                  </div>
+                                 
+<div class="custom-select" style="widows: 250px;">
+                                    <h2 class="titreunit">Enter your weight ‎‎‎     and Height:</h2>
+                                    <input  id="weight" type="text" placeholder="---Weight">
+                                    <select class="hola" type="multiple" id="weightunits" >
+                                      <option value="kg" selected="selected">kilograms</option>
+                                      <option value="lb">pounds</option>
+                                    </select>
+                                    
+<br><br>
+
+                                    <input type="text" id="height" placeholder="---Height" />
+
+
+                                    <select class="holaa" type="multiple" id="heightunits" >
+                                        <option value="metres" selected="selected">metres</option>
+                                        <option value="inches">inches</option>
+                                      </select>
+                                  </div>
+                                 <div class="boton"> <input type="button"  class="myButton" value="computeBMI" onclick="computeBMI()"/></div>
+     <h1>your bmi is : <span id="output"></span></h1>
+
+    <h2>which means : <span id='comment'></span> </h2> 
+                                </div>
+                                
+
+                            </div>
+
+    </body>
+</html>
